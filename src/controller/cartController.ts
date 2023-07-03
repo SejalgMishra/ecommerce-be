@@ -100,7 +100,6 @@ class CartController {
         const cartData = cartItems.map((cartItem) => {
           const { productId, quantity, price, product } = cartItem.dataValues;
           const { name, productimage } = product.dataValues;
-          console.log(product, "products");
 
           return {
             productId,
@@ -133,7 +132,6 @@ class CartController {
           productId: productId,
         },
       });
-      // console.log(cartItem);
 
       if (!cartItem) {
         res.status(404).json({ error: "Cart item not found" });

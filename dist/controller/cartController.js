@@ -93,7 +93,6 @@ CartController.getCart = (req, res) => __awaiter(void 0, void 0, void 0, functio
             const cartData = cartItems.map((cartItem) => {
                 const { productId, quantity, price, product } = cartItem.dataValues;
                 const { name, productimage } = product.dataValues;
-                console.log(product, "products");
                 return {
                     productId,
                     quantity,
@@ -124,7 +123,6 @@ CartController.editCartItem = (req, res) => __awaiter(void 0, void 0, void 0, fu
                 productId: productId,
             },
         });
-        // console.log(cartItem);
         if (!cartItem) {
             res.status(404).json({ error: "Cart item not found" });
             return;

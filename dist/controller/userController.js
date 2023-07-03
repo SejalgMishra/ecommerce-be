@@ -198,6 +198,7 @@ userController.deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, func
 });
 userController.updateUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password, email } = req.body;
+    console.log(req.body);
     try {
         const checkData = yield user_1.User.findAll({
             where: {
@@ -213,6 +214,7 @@ userController.updateUsers = (req, res) => __awaiter(void 0, void 0, void 0, fun
             res.json({
                 msg: "updated Succesfully",
                 data: { username, password, email },
+                users
             });
         }
         else {

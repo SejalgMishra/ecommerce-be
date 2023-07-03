@@ -15,7 +15,6 @@ class userController {
           id: userId,
         },
       });
-      console.log(details);
 
       res.json(details);
     } catch (error) {
@@ -71,7 +70,6 @@ class userController {
         confirm_password: myEnPassword,
         role,
       });
-      console.log(users.dataValues.id);
 
       // my response
       const userData = {
@@ -99,7 +97,6 @@ class userController {
 
   static LoginData = async (req: Request, res: Response) => {
     const { email, password, role } = req.body;
-    console.log(req.body);
 
     try {
       const LoginData = await User.findOne({
@@ -153,7 +150,6 @@ class userController {
   static authUser = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
-    console.log(req.body);
     const LoginData = await User.findOne({
       where: {
         email,
@@ -211,6 +207,7 @@ class userController {
 
   static updateUsers = async (req: Request, res: Response) => {
     const { username, password, email } = req.body;
+    
     try {
       const checkData = await User.findAll({
         where: {
@@ -229,6 +226,7 @@ class userController {
         res.json({
           msg: "updated Succesfully",
           data: { username, password, email },
+          users
         });
       } else {
         res.json("no data founded");
