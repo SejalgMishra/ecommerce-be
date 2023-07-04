@@ -2,6 +2,7 @@ import { Op } from "sequelize";
 import { Product } from "../models/product";
 import { Request, Response } from "express";
 import { productValidation } from "../request/productValidation";
+import { Category } from "../models/category";
 
 class productController {
   static getAllProducts = async (req: Request, res: Response) => {
@@ -12,9 +13,14 @@ class productController {
           "name",
           "price",
           "rating",
-          "categoryId",
           "offerId",
           "productimage",
+        ],
+        include : [
+         {
+          model : Category,
+          attributes : ["name"]
+         }
         ],
         order: [
           ["createdAt", "DESC"],

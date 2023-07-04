@@ -30,7 +30,6 @@ userController.getOneUserDetail = (req, res) => __awaiter(void 0, void 0, void 0
                 id: userId,
             },
         });
-        console.log(details);
         res.json(details);
     }
     catch (error) {
@@ -82,7 +81,6 @@ userController.register = (req, res) => __awaiter(void 0, void 0, void 0, functi
             confirm_password: myEnPassword,
             role,
         });
-        console.log(users.dataValues.id);
         // my response
         const userData = {
             username: users.dataValues.username,
@@ -104,7 +102,6 @@ userController.register = (req, res) => __awaiter(void 0, void 0, void 0, functi
 });
 userController.LoginData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password, role } = req.body;
-    console.log(req.body);
     try {
         const LoginData = yield user_1.User.findOne({
             // attributes: ["id", "email", "password","username"],
@@ -146,7 +143,6 @@ userController.LoginData = (req, res) => __awaiter(void 0, void 0, void 0, funct
 });
 userController.authUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
-    console.log(req.body);
     const LoginData = yield user_1.User.findOne({
         where: {
             email,
@@ -198,7 +194,6 @@ userController.deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, func
 });
 userController.updateUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password, email } = req.body;
-    console.log(req.body);
     try {
         const checkData = yield user_1.User.findAll({
             where: {
