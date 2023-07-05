@@ -14,13 +14,8 @@ class productController {
           "price",
           "rating",
           "offerId",
+          "categoryId",
           "productimage",
-        ],
-        include : [
-         {
-          model : Category,
-          attributes : ["name"]
-         }
         ],
         order: [
           ["createdAt", "DESC"],

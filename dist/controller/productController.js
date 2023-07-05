@@ -13,7 +13,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const product_1 = require("../models/product");
 const productValidation_1 = require("../request/productValidation");
-const category_1 = require("../models/category");
 class productController {
 }
 _a = productController;
@@ -26,13 +25,8 @@ productController.getAllProducts = (req, res) => __awaiter(void 0, void 0, void 
                 "price",
                 "rating",
                 "offerId",
+                "categoryId",
                 "productimage",
-            ],
-            include: [
-                {
-                    model: category_1.Category,
-                    attributes: ["name"]
-                }
             ],
             order: [
                 ["createdAt", "DESC"],
