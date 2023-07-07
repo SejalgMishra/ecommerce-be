@@ -42,6 +42,13 @@ class userController {
           },
         },
       });
+      if(!(password.endsWith(" ") && password.endsWith("_"))){
+        return res.json({msg : "error"})
+     }
+    //   if(!(password.match(/^[^\s]+(\s+[^\s]+)*$/))){
+    //    return res.json({msg : "error"})
+    // }
+    
       if (checkData.length > 0) {
         return res
           .status(400)
