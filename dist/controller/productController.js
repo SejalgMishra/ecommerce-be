@@ -176,7 +176,7 @@ productController.serchProducts = (req, res) => __awaiter(void 0, void 0, void 0
     const { name } = req.query;
     try {
         const products = yield product_1.Product.findAll({
-            attributes: ["name", "id", "productimage"],
+            attributes: ["name", "id", "productimage", "rating", "price"],
             where: {
                 name: {
                     [sequelize_1.Op.like]: `%${name}%`

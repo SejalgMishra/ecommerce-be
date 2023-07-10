@@ -185,7 +185,7 @@ class productController {
 
   try {
     const products = await Product.findAll({
-      attributes : ["name" , "id" , "productimage"],
+      attributes : ["name" , "id" , "productimage","rating","price"],
       where: {
         name: {
           [Op.like]: `%${name}%`
