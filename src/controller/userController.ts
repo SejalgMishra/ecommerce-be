@@ -115,7 +115,7 @@ class userController {
         password,
         LoginData?.dataValues.password
       );
-
+          
       if (!myPassword) {
         res.status(400).send("Invalid Password");
         return;

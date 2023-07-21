@@ -3,6 +3,7 @@ import { Product } from "../models/product";
 import { Request, Response } from "express";
 import { productValidation } from "../request/productValidation";
 import { Category } from "../models/category";
+import { url } from "inspector";
 
 class productController {
   static getAllProducts = async (req: Request, res: Response) => {
@@ -120,8 +121,6 @@ class productController {
     const { name, description, price, rating, category, stock, offers } =
       req.body;
 
-    const filename = req.file;
-
     try {
       const checkData = await Product.findAll({
         where: {
@@ -138,7 +137,7 @@ class productController {
             category,
             stock,
             offers,
-            productimage: filename,
+            productimage: req.url ,
           },
           {
             where: {
@@ -183,22 +182,22 @@ class productController {
   static serchProducts = async (req: Request, res: Response) => {
     const { name } = req.query;
 
-  try {
-    const products = await Product.findAll({
-      attributes : ["name" , "id" , "productimage","rating","price"],
-      where: {
-        name: {
-          [Op.like]: `%${name}%`
-        }
-      }
-    });
-    console.log(products);
-    
-    res.json(products);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
-  }
+    try {
+      const products = await Product.findAll({
+        attributes: ["name", "id", "productimage", "rating", "price"],
+        where: {
+          name: {
+            [Op.like]: `%${name}%`,
+          },
+        },
+      });
+      console.log(products);
+
+      res.json(products);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
   };
 }
 

@@ -102,7 +102,7 @@ class categoryController {
         console.log(updateCategories ,"updateProduct");
         
 
-      res.json({msg : "upadtaed" , data :{name , description}})
+      res.json({msg : "upadtaed" , data : {name , description}})
       }
     } catch (error) {
       console.error("Error retrieving categories:", error);
@@ -130,7 +130,7 @@ class categoryController {
       
       console.log(categories);
       
-      if(categories){
+      if(categories) {
         const deleteCategories= await Category.destroy({
           where : { id : id}
         })

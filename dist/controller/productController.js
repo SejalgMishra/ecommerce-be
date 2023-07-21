@@ -118,7 +118,6 @@ productController.addProducts = (req, res) => __awaiter(void 0, void 0, void 0, 
 });
 productController.updateProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, description, price, rating, category, stock, offers } = req.body;
-    const filename = req.file;
     try {
         const checkData = yield product_1.Product.findAll({
             where: {
@@ -134,7 +133,7 @@ productController.updateProducts = (req, res) => __awaiter(void 0, void 0, void 
                 category,
                 stock,
                 offers,
-                productimage: filename,
+                productimage: req.url,
             }, {
                 where: {
                     id: req.params.id,
@@ -179,9 +178,9 @@ productController.serchProducts = (req, res) => __awaiter(void 0, void 0, void 0
             attributes: ["name", "id", "productimage", "rating", "price"],
             where: {
                 name: {
-                    [sequelize_1.Op.like]: `%${name}%`
-                }
-            }
+                    [sequelize_1.Op.like]: `%${name}%`,
+                },
+            },
         });
         console.log(products);
         res.json(products);

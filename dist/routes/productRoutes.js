@@ -12,6 +12,6 @@ router.get("/user/product", productController_1.default.getAllProducts);
 router.get("/user/product/:id", productController_1.default.getOneProducts);
 router.get("/search", productController_1.default.serchProducts);
 router.post("/admin/product", auth_1.authMiddleware, (0, upload_1.UploadSingleFile)(upload_1.UPLOAD_TYPES.IMAGE, "prodcutimage"), productController_1.default.addProducts);
-router.patch("/admin/product/:id", auth_1.authMiddleware, productController_1.default.updateProducts);
+router.patch("/admin/product/:id", productController_1.default.updateProducts);
 router.delete("/admin/product/:id", auth_1.authMiddleware, productController_1.default.deleteProducts);
 exports.default = router;

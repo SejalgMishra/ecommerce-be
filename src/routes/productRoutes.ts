@@ -21,7 +21,6 @@ router.post(
 
 router.patch(
   "/admin/product/:id",
-  authMiddleware,
   productController.updateProducts
 );
 

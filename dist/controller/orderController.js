@@ -168,7 +168,7 @@ orderController.getOrderUser = (req, res) => __awaiter(void 0, void 0, void 0, f
         });
         if (order) {
             const user = yield user_1.User.findOne({
-                where: { id },
+                where: { id }
             });
             res.json({ users: user, orders: order });
         }

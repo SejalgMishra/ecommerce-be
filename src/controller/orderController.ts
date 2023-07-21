@@ -179,7 +179,7 @@ class orderController {
 
       if (order) {
         const user = await User.findOne({
-          where: { id },
+          where: { id } 
         });
         res.json({ users: user, orders: order });
       }
